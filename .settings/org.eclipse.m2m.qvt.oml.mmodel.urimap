@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<uriMap:MappingContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uriMap="http:///www.eclipse.org/m2m/qvt/oml/MModelUriMap/1.0.0">
+  <mapping sourceURI="http://www.hs-fulda.de/mdd/sourceModel" targetURI="platform:/resource/EMF_Project_OCL_task5/model/sourceModel.ecore"/>
+  <mapping sourceURI="http://www.hs-fulda.de/mdd/targetModel" targetURI="platform:/resource/EMF_Project_OCL_task5/model/targetModel.ecore"/>
+</uriMap:MappingContainer>

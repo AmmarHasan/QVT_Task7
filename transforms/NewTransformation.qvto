@@ -1,0 +1,29 @@
+modeltype SOURCE uses SourceModel('http://www.hs-fulda.de/mdd/sourceModel');
+modeltype TARGET uses TargetModel('http://www.hs-fulda.de/mdd/targetModel');
+
+transformation NewTransformation( in source :  SOURCE , out  target : TARGET);
+
+mapping SOURCE::Container::ContToCont() : TARGET::Container {
+//	persons := self.persons->selectByType(Professor)->map ProfToPerson() ;
+//	persons := self.persons->map PersonToPerson();
+	persons := self.persons->selectByType(Professor)->map PersonToPerson();
+	persons += self.persons->map CopyOfPerson();
+//	persons += self.persons.age=10 -> map PersonToPerson();
+}
+
+mapping SOURCE::Professor::ProfToPerson() : TARGET::Person {
+}
+
+mapping SOURCE::Person::PersonToPerson() : TARGET::Person {
+	age := self.age;
+}
+
+mapping SOURCE::Person::CopyOfPerson() : TARGET::Person {
+	age := self.age - 1 ;
+}
+
+main() {
+	source.objectsOfType(Container)-> map ContToCont() ;
+	
+	source.objectsOfKind(Person)->map PersonToPerson();
+}
